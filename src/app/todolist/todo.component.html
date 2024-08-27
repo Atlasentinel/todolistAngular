@@ -20,7 +20,7 @@
       @for (todo of todos; track $index; let indexTodos = $index) {
       <tr>
         <td>
-          <input type="checkbox" class="form-check-input me-2" (change)="toggleCompletion(indexTodos)">
+          <input type="checkbox" [checked]="todo.completed" class="form-check-input me-2" (change)="toggleCompletion(indexTodos)">
           <span [class.text-decoration-line-through]="todo.completed">{{ todo.task }}</span>
         </td>
         <td>
