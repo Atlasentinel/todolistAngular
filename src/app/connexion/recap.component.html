@@ -1,0 +1,57 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-2">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Tâches accomplies</h5>
+                    <p class="card-text">Vous avez {{ totalTasks }} tâches en tout.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Tâches accomplies</h5>
+                    <p class="card-text">
+                        {{ completedTasks.length }} tâche(s) accomplie.
+                    </p>
+                    <ul class="list-group">
+                        @for (task of completedTasks ; track $index; let indexTodos = $index){
+                        <li class="list-group-item">
+                            {{ task.task }}
+                        </li>
+                        }
+                        @if(!completedTasks.length){
+                        <li class="list-group-item text-muted">
+                            Aucune tâche accomplie pour le moment.
+                        </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Tâches restantes</h5>
+                    <p class="card-text">
+                        {{ pendingTasks.length }} tâche(s) à accomplir.
+                    </p>
+                    <ul class="list-group">
+                        @for (task of pendingTasks ; track $index; let indexTodos = $index){
+                        <li class="list-group-item">
+                            {{ task.task }}
+                        </li>
+                        }
+                        @if(!pendingTasks.length){
+                        <li class="list-group-item text-muted">
+                            Toutes les tâches sont accomplies !
+                        </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,41 @@
+<div class="container mt-5">
+  <h1 class="text-center mb-4">Todo Liste</h1>
+
+  <div class="mb-3 mt-5">
+    <input [(ngModel)]="nomTache" />
+    <button class="btn btn-primary btn-circle border-cirlce" (click)="addTask()">
+      Ajouter une tâche
+    </button>
+  </div>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Tâche</th>
+        <th>Complété</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (todo of todos; track $index; let indexTodos = $index) {
+      <tr>
+        <td>
+          <input type="checkbox" class="form-check-input me-2" (change)="toggleCompletion(indexTodos)">
+          <span [class.text-decoration-line-through]="todo.completed">{{ todo.task }}</span>
+        </td>
+        <td>
+          @if(todo.completed){
+          <span> Oui</span>
+          }
+          @if(!todo.completed){
+          <span>Non</span>
+          }
+        </td>
+        <td>
+          <button class="btn btn-danger btn-circle" (click)="deleteTask(indexTodos)">Supprimer</button>
+        </td>
+      </tr>
+    }
+    </tbody>
+  </table>
+</div>
